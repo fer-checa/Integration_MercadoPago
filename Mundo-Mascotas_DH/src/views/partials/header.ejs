@@ -1,0 +1,101 @@
+<!-- BANNER DE COMUNICACION -->
+
+<!-- <div class="banner-comunicacion " style="justify-content: center;">
+     
+    <p class="banner-day"  style="line-height: 110%;"> "Con tu compra superior a $ 6.500.-   <a href="/"><img src="/img/home/icono-camioncito.jpg" alt="icino camioncito" class=""></a></p>
+    <br>
+    <p>¡ Envio gratis a todo el pais !</p>
+    <br>
+</div>
+
+<div class="banner-comunicacion" style="justify-content: center;">
+     
+    <p class="banner-day"  style="line-height: 110%"> Hasta 6 cuotas sin interes *   <a href="/"><img src="/img/home/icono-tarjeta.jpg" alt="icono tarjeta" class=""></a></p>
+    <br>
+    <p>¡ Envio gratis a todo el pais !</p>
+    <br>
+</div>  -->
+
+
+
+<header>
+
+    <div class="main-header">
+        <div style="vertical-align: text-bottom;">
+            <a href="/"><img src="/img/home/logo.jpg" alt="logo mundo mascota DH" class="logo"></a> <br>
+            <!-- NOMBRE -->
+            <p style="margin-left: 60px ; margin-top: 10px; font-family: 'Montserrat', sans-serif; color:  #ebebeb;">MUNDO MASCOTA DH</p>
+        </div>
+
+        <div class="input-group">
+            <div class="form-outline">
+              <input id="search-input" type="search" id="form1" class="form-control" placeholder="¿Que estas buscando?" />
+
+                <button id="search-button" type="button" class="btn btn-primary">
+                    <i class="fas fa-search"></i>
+                  </button>
+                  
+                </div>
+          </div>
+    </div>
+           
+
+    <!-- <div class="input-group">
+        <div class="form-outline">
+          <input id="search-input" type="search" id="form1" class="form-control" />
+          <label class="form-label" for="form1">Search</label>
+        </div>
+        <button id="search-button" type="button" class="btn btn-primary">
+          <i class="fas fa-search"></i>
+        </button>
+      </div> -->
+
+    <div>
+        <nav>
+            <ul class="nav-bar">
+                <li><a href="/products/todosLosProductos">Todos los productos</a> <i
+                    class="fas fa-paw iconito"></i></a></li>
+
+                    <li><a href="/products/sucursales">Sucursales</a> <i class="fa-solid fa-location-dot iconito"></i>
+                    </li>
+                    
+                <% if (locals.isLogged) { %>
+                    
+                    <!-- <li><a href="#">Mis pedidos</a> <i class="fas fa-shopping-basket iconito"></i></a></li> -->
+                    <li> <a href="/products/productCart">Carrito <i class="fa-solid fa-cart-shopping iconito"></i></a></li>
+
+                    <div class="nav-usuario-logueado">
+                        
+                    <li><a href="/user/profile"><img src="/img/usersImage/<%= locals.userLogged.image %>" width="20" style="border-radius: 150%;">
+                        <%= locals.userLogged.name %></a></a>
+                                             
+                    </li>
+                    <li><a  href="/user/profile">Mi Perfil</a></li>
+                    <li><a  href="/user/logout">Cerrar Sesión</a></li>
+                    <br>
+                    </div>	
+							
+					                     
+                    <% } else { %>
+
+                        <!-- <li><a href="/user/register">Registrate</a> <i class="fa-solid fa-address-card iconito"></i></a>
+                        </li> -->
+
+                        <li><a href="/user/login">Ingresar</a> <i class="fas fa-user iconito"></i></a></li>
+                       
+
+                    <% } %>
+                    
+                    <!-- VER COMO HACER TRUE locals.isAdmin**************************** -->
+                    <% if (locals.isAdmin) { %>
+                                <li> <a href="/admin">Administrar <i class="fa-solid fa-gear iconito"></i></a></li>
+                                <% } %>
+
+            </ul>
+        </nav>
+    </div>
+
+    <div class="burger-menu">
+        <i class="fas fa-bars menu"></i>
+    </div>
+</header>

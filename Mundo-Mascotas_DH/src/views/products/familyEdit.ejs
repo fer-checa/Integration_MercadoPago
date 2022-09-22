@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--------------------- HEAD ----------------->
+
+<%- include('../partials/head') %>
+    <!--------------------- BODY ----------------->
+
+    <body>
+        <!--------------------- HEADER ----------------->
+        <%- include('../partials/header') %>
+
+
+
+            <!-------------------- MAIN --------------------->
+            <main>
+                <div class="container">
+                    <h1>Editar Familia</h1>
+                    
+                    <h4>Id : <%= familyToEdit.id %> - <%= familyToEdit.name %>
+                    </h4>
+
+                    <% if(typeof alert !='undefined' ) { %>
+                        <% alert.forEach(function(error) { %>
+                            <div class="alert alert-danger alert-dismissible fade in">
+                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                <%= error.msg %>
+                            </div>
+                            <% }) %>
+                                <% } %>
+
+                                    <form action="/admin/familyEdit/<%= familyToEdit.id %>?_method=PATCH" method="POST">
+                                        <a class="btn" href="/admin/family"><i class="fa-solid fa-circle-left"></i>
+                                            Volver</a>
+                                        <div class="form-group">
+                                            <label for="nombre">Nombre Familia:</label>
+                                            <input id="nombre" type="text" class="form-control" name="nombre" maxlength="50"
+                                                value="<%=familyToEdit.name %>"
+                                                placeholder="<%= familyToEdit.name %>">
+                                        </div>
+
+
+
+
+                                        <div class="form-group row">
+                                            <div class="col-xs-6 col-md-4">
+                                                <label for="activo">Familia Activa:</label>
+                                                <select id="activo" name="activo" class="form-control">
+                                                    <option></option>
+                                                    <option  
+                                                    <% if (familyToEdit.active) { %> 
+                                                        selected
+                                                    <% } %> >SI</option>    
+                                                    <option  <% if (!familyToEdit.active) { %> 
+                                                        selected
+                                                    <% } %> >NO</option>
+
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <hr>
+                                        <div class="form-group row">
+                                            <div class="col-12 ">
+                                                <button id="btnGuardar" type="submit"
+                                                    class="btn btn-primary btn-md btn-block"><i
+                                                        class="far fa-check-circle"></i>
+                                                    Guardar</button>
+                                            </div>
+
+
+                                        </div>
+
+                                        <script type="text/javascript">
+
+                                            // if ('<%=familyToEdit.active%>' == 1) {
+                                            //     document.getElementById("activo").value = 'SI';
+                                            // } else { document.getElementById("activo").value = 'NO' }
+
+                                        </script>
+
+
+                                    </form>
+                </div>
+
+            </main>
+
+            <!-- FOOTER -->
+            <%- include ('../partials/footer.ejs') %>
+
+    </body>
+
+</html>

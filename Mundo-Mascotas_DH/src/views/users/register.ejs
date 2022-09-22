@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--------------------- HEAD ----------------->
+<%- include('../partials/head') %>
+
+    <!--------------------- BODY ----------------->
+
+    <body>
+        <!--------------------- HEADER ----------------->
+        <%- include('../partials/header') %>
+
+            <!-------------------- MAIN --------------------->
+
+            <main>
+                <br>
+                <br>
+                <h1>Registro de Usuario</h1>
+                <br>
+
+                <!-------------------- FORMULARIO DE REGISTRO --------------------->
+
+                <form action="/user/register" method="POST" class="form-seguridad" enctype="multipart/form-data">
+                    <div class="contenedor-seguridad">
+                        <a class="btn" href="/admin/family"><i class="fa-solid fa-circle-left"></i>
+                            Volver</a>
+
+                            <h5 class="userRegistered" style="color: red;"> <%= locals.userRegistered %></h5>
+                            
+                            <ul class="errores"></ul>
+
+                            <% if(locals.errors !=undefined ) { %>
+                                <ul>
+                                    <% for (let i=0; i<locals.errors.length; i++) { %>
+                                        <li style="color: red;">
+                                            <%= errors[i].msg %>
+                                        </li>
+                                        <% } %>
+                                </ul>
+
+                                <% } %>
+
+                                <div>
+                                    <input type="text" class="input-registro" id="name" name="name"
+                                        placeholder="Nombre">
+                                </div>
+                                <div><input class="input-registro" id="email" name="email" placeholder="E-mail"></div>
+                                <div><input class="input-registro" type="password" id="password" name="password"
+                                        placeholder="Contraseña"></div>
+                                <div>
+                                    <label for="fotoUsuario" class="input-registro">Imagen:</label>
+                                    <input type="file" id="fotoUsuario" name="fotoUsuario"
+                                        accept="image/png, image/gif, image/jpeg, image/jpg" class="product-image">
+                                </div>
+
+                                <div class="boton-final contenedor-botones ">
+                                    <button id="" type="submit" class="btn-success boton-seguridad">
+                                        <i class="fa-solid fa-user-check"></i> Crear cuenta
+                                    </button>
+
+
+                                    <button id="" type="reset" class="boton-seguridad">
+                                        <i class="fas fa-trash-alt"></i> Limpiar
+                                    </button>
+                                </div>
+
+                    </div>
+                </form>
+            </main>
+
+            <!-------------------- FOOTER --------------------->
+            <%- include ('../partials/footer.ejs') %>
+                <script src="/js/register.js"> </script>
+    </body>
+
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--------------------- HEAD ----------------->
+<%- include('../partials/head') %>
+
+    <!--------------------- BODY ----------------->
+
+    <body>
+        <!--------------------- HEADER ----------------->
+        <%- include('../partials/header') %>
+
+            <!-------------------- MAIN --------------------->
+            <main>
+                <br>
+                <br>
+                <h1>Iniciar sesion</h1>
+                <br>
+
+                <form method="POST" action="login" class="form-seguridad">
+
+                    <div class="contenedor-seguridad">
+
+                        <ul class="errores"></ul>
+                        <% console.log(locals.errors); %>
+                        <% if(locals.errors !=undefined) { %>
+                            <ul>
+                                <% for (let i=0; i<locals.errors.length; i++) { %>
+                                    <li style="color: red">
+                                        <%= errors[i].msg %>
+                                    </li>
+                                    <% } %>
+                            </ul>
+
+                            <% } %>
+                            
+
+                                <div class="col-md-6 my-2">
+                                    <div class="form-group">
+                                        <label><b>Email:</b></label>
+                                        <input type="text" name="email" id="email" class="form-control">
+
+                                    </div>
+                                </div>
+                                <div class="col-md-6 my-2">
+                                    <div class="form-group">
+                                        <label><b>Password:</b></label>
+                                        <input type="password" name="password" id="password" class="form-control">
+                                        <div class="invalid-feedback">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 my-2">
+                                    <div class="form-group form-check">
+                                        <label class="form-check-label">
+                                            <input type="checkbox" class="form-check-input"
+                                                name="remember_user">Recordar mi
+                                            usuario
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 my-3">
+                                    <button type="submit" class="btn btn-primary"><i class="fa-solid fa-user-check"></i>
+                                        Ingresar</button>
+                                </div>
+                    </div>
+
+                </form>
+
+                <a class="links-seguridad" href="/user/register">Crear una cuenta</a>
+
+
+
+
+
+                <!-- <form class="form-seguridad" action="login" method="POST">
+                    <div class="contenedor-seguridad">
+
+                        <div><input type="email" class="input-registro" text= "email" name= "email" placeholder="Email">
+
+                      
+                        </div>
+                        <div><input type="password" class="input-registro" placeholder="Contraseña"></div>
+                        <br>
+                        
+                        <div class="form-check mb-3">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="checkbox" name="remember"> Recordarme
+                            </label>
+                        </div> <br>
+                        
+                        <div class="boton-final contenedor-botones ">
+                            <button id="" type="submit" class="btn-success boton-seguridad">
+                                <i class="fa-solid fa-user-check"></i> Ingresar
+                            </button>
+                        </div>
+                        <a class="links-seguridad" href="/recuperar">¿Olvidaste tu contraseña?</a>
+
+                        <a class="links-seguridad" href="/user/register">Crear una cuenta</a>
+                        <br>
+                        <br>
+                    </div>
+                    
+                </form> -->
+
+            </main>
+
+            <!-------------------- FOOTER --------------------->
+            <%- include ('../partials/footer.ejs') %>
+            <script src="/js/login.js"></script>
+    </body>
+
+</html>

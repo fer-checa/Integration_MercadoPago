@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--------------------- HEAD ----------------->
+
+<%- include('../partials/head') %>
+    <!--------------------- BODY ----------------->
+
+    <body>
+        <!--------------------- HEADER ----------------->
+        <%- include('../partials/header') %>
+
+            <!-------------------- MAIN --------------------->
+            <main>
+                <div class="container">
+                    <h1>Alta - Baja - Modificacion de Familias </h1>
+                    <a class="btn" href="/admin"><i class="fa-solid fa-circle-left"></i> Volver</a>
+                    <a class="btn" href="/admin/familyNew">Crear Familia <i class="fa-solid fa-file"></i></a>
+                    <br><br>
+                    <input class="form-control" id="myInput" type="text" placeholder="Buscar..">
+                    <br>
+                    <table style="margin-left: 0; margin-right:0 ;" class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th style="width: 5%; text-align: center; ">id</th>
+                                <th style="width: 60%;text-align: center;">Nombre</th>
+                                <th style="width: 10%;text-align: center;">Activo</th>
+                                <th style="width: 10%;text-align: center;">Editar</th>
+                                <th style="width: 15%;text-align: center;">Activar/Desactivar</th>
+
+                            </tr>
+                        </thead>
+                        <tbody id="myTable">
+                            <% for (let aux of familias ){ %>
+                                <tr>
+                                    <td>
+                                        <%= aux.id%>
+                                    </td>
+                                    <td>
+                                        
+                                        <%= aux.name%>
+                                    </td>
+                                    <td>
+                                        
+                                        <% if (aux.active==false) { %> NO<%} else { %> SI<% } %> 
+                                    </td>
+                                    <td>
+                                        <a href="/admin/familyEdit/<%= aux.id%>" class="btn-edit-grid"><i title="Editar Familia"
+                                        
+                                            class="fa-solid fa-pen-to-square"></i></a>
+    
+                                    </td>
+                                    <td>
+
+                                        <% if (aux.active==true) { %> 
+                                            <form style="display:inline; " action="/admin/familyInactivar/<%= aux.id%>" method="POST">
+                                                <button type="submit"  class="btn-activar-grid"><i title="Inactivar Familia"
+                                                        class="fa-regular fa-square-check"></i></button>
+                                            </form>
+
+                                            <% } else { %>
+                                                <form style="display:inline; " action="/admin/familyActivar/<%= aux.id%>" method="POST">
+                                                    <button type="submit"  class="btn-inactivar-grid"><i title="Activar familia"
+                                                            class="fa-regular fa-square"></i></button>
+                                                </form>
+                                                <% } %>
+
+                            </td>
+                                </tr>
+                                <%}%>
+                        </tbody>
+                    </table>
+                </div>
+            </main>
+
+            <!-- FOOTER -->
+            <%- include ('../partials/footer.ejs') %>
+    </body>
+    <script>
+        $(document).ready(function () {
+            $("#myInput").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+
+</html>

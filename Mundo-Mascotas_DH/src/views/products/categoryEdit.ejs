@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--------------------- HEAD ----------------->
+
+<%- include('../partials/head') %>
+    <!--------------------- BODY ----------------->
+
+    <body>
+        <!--------------------- HEADER ----------------->
+        <%- include('../partials/header') %>
+
+
+
+            <!-------------------- MAIN --------------------->
+            <main>
+                <div class="container">
+                    <h1>Editar Categoria</h1>
+                    <h4>Id : <%= categoryToEdit.id %> - <%= categoryToEdit.name %>
+                    </h4>
+                    <ul class="errores"></ul>
+                    
+                    
+                
+                    <% if(typeof alert !='undefined' ) { %>
+                        <% alert.forEach(function(error) { %>
+                            <div class="alert alert-danger alert-dismissible fade in">
+                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                <%= error.msg %>
+                            </div>
+                            <% }) %>
+                                <% } %>
+
+                                    <form action="/admin/categoryEdit/<%= categoryToEdit.id %>?_method=PATCH"
+                                        method="POST" class="form">
+                                        <a class="btn" href="/admin/category"><i class="fa-solid fa-circle-left"></i>
+                                            Volver</a>
+                                        <div class="form-group">
+                                            <label for="nombre">Nombre Categoria:</label>
+                                            <input id="nombre" type="text" class="form-control" name="nombre"
+                                                value="<%=categoryToEdit.name %>"
+                                                placeholder="<%= categoryToEdit.name %>">
+                                        </div>
+                                        
+                                         <p><%= categoryToEdit.active %>  </p>    
+                                        <div class="form-group row">
+                                            <div class="col-xs-6 col-md-4">
+                                                <label for="activo">Categoria Activa:</label>
+                                                <select id="activo" name="activo" class="form-control">
+                                                 
+                                                    <option></option>
+                                                    <option  
+                                                    <% if (categoryToEdit.active) { %> 
+                                                        selected
+                                                    <% } %> >SI</option>    
+                                                    <option  <% if (!categoryToEdit.active) { %> 
+                                                        selected
+                                                    <% } %> >NO</option>
+
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <hr>
+                                        <div class="form-group row">
+                                            <div class="col-12 ">
+                                                <button id="btnGuardar" type="submit"
+                                                    class="btn btn-primary btn-md btn-block"><i
+                                                        class="far fa-check-circle"></i>
+                                                    Guardar</button>
+                                            </div>
+
+
+                                        </div>
+
+                                        <script type="text/javascript">
+
+                                            // if ('<%=categoryToEdit.active%>' == 1) {
+                                            //     document.getElementById("activo").value = 'SI';
+                                            // } else { document.getElementById("activo").value = 'NO' }
+
+
+
+
+                                        </script>
+
+
+                                    </form>
+                </div>
+
+            </main>
+
+            <!-- FOOTER -->
+            <%- include ('../partials/footer.ejs') %>
+               
+
+    </body>
+
+</html>

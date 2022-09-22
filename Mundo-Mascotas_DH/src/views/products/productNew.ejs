@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--------------------- HEAD ----------------->
+
+<%- include('../partials/head') %>
+    <!--------------------- BODY ----------------->
+
+    <body>
+        <!--------------------- HEADER ----------------->
+        <%- include('../partials/header') %>
+
+
+            <script>
+                document.getElementById("demo").innerHTML = "Hello JavaScript!";
+            </script>
+            <!-------------------- MAIN --------------------->
+            <main>
+                <div class="container">
+                    <h1>Alta Producto</h1>
+                    <br>
+                    <!-- ****************************************** -->
+                    <ul class="errores"></ul>
+                    
+                    <div class="form-seguridad">
+
+                        <% if(locals.errors != undefined) { %>
+                            <ul>
+                                <% for (let i=0; i<locals.errors.length; i++) { %>
+                                    <li style="color: red">
+                                        <%= errors[i].msg %> 
+                                    </li>
+                                   
+                                    <% } %> 
+                            </ul>
+                
+                        <% } %> 
+                            
+                       </div>
+
+                    <!-- ****************************************** -->
+                
+                                <a class="btn" href="/admin/products"><i class="fa-solid fa-circle-left"></i>Volver</a>
+
+                                    <form action="/admin/productNew" method="POST" enctype="multipart/form-data" class="formProduct">
+                                        
+                                            <label for="comment">Nombre del producto :</label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i
+                                                    class="glyphicon glyphicon-user"></i></span>
+                                            <input id="nombre" type="text" class="form-control" name="nombre"
+                                                value="<%=locals.old && old.name%>" placeholder="Nombre del Producto" >
+                                        </div>
+                                        <br>
+                                        <div class="input-group" style="width:100% ;">
+                                            <label for="comment">Descripcion del producto :</label>
+                                            <textarea class="form-control" rows="5" id="descripcion"
+                                                name="descripcion"><%=locals.old && old.description%></textarea>
+                                        </div>
+
+                                        <!-- COMBOS -->
+
+
+                                        <div class=" row">
+                                            <div class="col-xs-12 col-md-6">
+
+                                                <!-- COMBO CATEGORIAS -->
+                                                <div class="form-group">
+                                                    <br>
+                                                    <label for="">Seleccione categoria:</label>
+                                                    
+                                                    <p>
+                                                        <select class="form-control" id="categoria" name="categoria">
+                                                            <option value="" selected disabled>Seleccione categoria:
+                                                            </option>
+
+                                                            <% allCategory.forEach(categoryAnimals=> { %>
+                                                                <option value="<%= categoryAnimals.id %>">
+                                                                    <%= categoryAnimals.name %>
+                                                                </option>
+                                                                <% }) %>
+
+                                                        </select>
+                                                    </p>
+                                                </div>
+                                            </div>
+
+                                            <!-- COMBO FAMILIAS -->
+                                            <div class="col-xs-12  col-md-6">
+                                                <div class="form-group">
+                                                    <br>
+                                                    <label for="">Seleccione familia:</label>
+                                                    
+                                                    <select class="form-control" id="familia" name="familia">
+
+                                                        <option value="" selected disabled>Seleccione familia:</option>
+
+                                                        <% allFamily.forEach(FamilyProducts=> { %>
+                                                            <option value="<%= FamilyProducts.id %>">
+                                                                <%= FamilyProducts.name %>
+                                                            </option>
+                                                            <% }) %>
+
+                                                    </select>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        
+                                        <div class="form-group row">
+                                            
+                                            <div class="col-xs-12 col-md-6">
+                                                <label for="">Precio:</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i
+                                                            class="fa-solid fa-sack-dollar"></i></span>
+                                                    <input step="0.01" min="1" type="number" name="precio" id="precio"
+                                                        class="form-control" name="precio"
+                                                        placeholder="Precio del Producto"
+                                                        value="<%=locals.old && old.price%>" >
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="col-xs-12 col-md-6">
+                                                <label for="">Descuento:</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i
+                                                            class="fa-solid fa-percent"></i></span>
+                                                    <input step="0.01" min="0" name="descuento" id="descuento"
+                                                        type="number" class="form-control" name="descuento"
+                                                        placeholder="Descuento del Producto"
+                                                        value="<%=locals.old && old.discount%>">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <div class="col-xs-12 col-md-6">
+                                                <label for="fotoProducto"> Foto del producto: </label>
+                                                <input type="file" name="fotoProducto" id="foto" class="input" >
+                                            </div><!-- accept="image/png, image/gif, image/jpeg, image/jpg" -->
+                                            <!-- <div class="col-md-6">
+                                                        <img src="/img/products/imagen-no-disponible.png"
+                                                            alt="imagen-no-disponible" style="width:250px; height:300px ;">
+                                                    </div> -->
+
+                                            <div class="col-xs-12 col-md-6">
+                                                <label for="selActivo">Producto activo:</label>
+
+                                                <select id="selectActivo" name="activo" class="form-control"
+                                                    id="selActivo">
+                                                    <option value="" selected disabled> Seleccione activo:</option>
+                                                    <option>SI</option>
+                                                    <option>NO</option>
+
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <hr>
+                                        <div class="form-group row">
+                                            <div class="col-xs-12 col-md-6">
+                                                <button id="btnGuardar" type="submit"
+                                                    class="btn btn-primary btn-md btn-block"><i
+                                                        class="far fa-check-circle"></i>
+                                                    Guardar</button>
+                                            </div>
+                                            <div class="col-xs-12 col-md-6">
+                                                <button id="btnLimpiar" type="reset"
+                                                    class="btn btn-warning btn-md btn-block"><i
+                                                        class="fa-solid fa-broom"></i> Limpiar</button>
+                                            </div>
+
+                                        </div>
+                                    </form>
+                </div>
+                <br>
+                <br>
+            </main>
+
+            <!-- FOOTER -->
+            <%- include ('../partials/footer.ejs') %>
+            <script src="/js/products.js"></script>
+    </body>
+
+</html>

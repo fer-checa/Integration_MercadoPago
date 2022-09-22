@@ -1,0 +1,58 @@
+[
+ {
+  "id": 1,
+  "name": "Admin",
+  "email": "admin@mundomascotadh.com.ar",
+  "password": "admin",
+  "image": "adm.jpg",
+  "isAdmin": 1
+ },
+ {
+  "id": 2,
+  "name": "pepe",
+  "email": "pepe@pepe.com",
+  "password": "$2a$10$YcanSWUjjvfmBKFVzSUFfOJOc8hi779u8UolVXrtz8PGw7ktgWq0S",
+  "image": "user-1656894678330.jpg",
+  "isAdmin": 1
+ },
+ {
+  "id": 3,
+  "name": "aa",
+  "email": "aa@aa.com",
+  "password": "$2a$10$D.Etj6Uxd5fB.GlNZ.3zUu5sr1w9bT7UW0tDPPYpqq6BU4Pag1qQa",
+  "image": "user-1656900684972.png",
+  "isAdmin": 0
+ },
+ {
+  "id": 4,
+  "name": "Adolfo Wirth",
+  "email": "adolfowirth@hotmail.com",
+  "password": "$2a$10$hfWFNL.zT2gIvdzl2/kvXOefGQlY/mMw4nXGWq6aFV8RIF1bYQZ4a",
+  "image": "user-1657299147699.jpeg",
+  "isAdmin": 0
+ },
+ {
+  "id": 5,
+  "name": "Matias Menendez",
+  "email": "mamenendez@gmail.com",
+  "password": "$2a$10$XThwyRRNxf6HxyNVFFyr6uec42QwAMKg0COhF4RWFEfP8m6pfx29u",
+  "image": "user-1657369017923.png",
+  "isAdmin": 0
+ },
+ {
+  "id": 6,
+  "name": "pepita",
+  "email": "pepita@gmail.com",
+  "password": "$2a$10$1jwiQr6/fDwNPSVSR6au9.xpvTI0WxWInrRL1WjbGX8XmddH5vopa",
+  "image": "user-1657375372211.jpg",
+  "isAdmin": 0
+ },
+ {
+  "id": 7,
+  "name": "Fernanda",
+  "email": "fernanda.checa2015@gmail.com",
+  "password": "$2a$10$ucTXC.Un8qn90lZcDPA0Ee3P1KX5LdVr4C0SU9gMv.v7SZdzx3.hG",
+  "image": "user-1657418233845.jpg",
+  "isAdmin": 0
+ }
+]

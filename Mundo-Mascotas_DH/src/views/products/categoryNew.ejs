@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--------------------- HEAD ----------------->
+
+<%- include('../partials/head') %>
+    <!--------------------- BODY ----------------->
+
+    <body>
+        <!--------------------- HEADER ----------------->
+        <%- include('../partials/header') %>
+
+            <!-------------------- MAIN --------------------->
+            <main>
+                <div class="container">
+                    <h1>Alta Categoria</h1>
+                    <br>
+                    <ul class="errores"></ul>
+                    
+                    <div class="form-seguridad">
+                        <% if(locals.errors != undefined) { %>
+                            <ul>
+                                <% for (let i=0; i<locals.errors.length; i++) { %>
+                                    <li style="color: red">
+                                        <%= errors[i].msg %> 
+                                    </li>
+                                    <% } %> 
+                            </ul>
+                
+                        <% } %> 
+                
+                       </div>
+
+                                    <form action="/admin/categoryNew" method="POST" class="form">
+                                        <a class="btn" href="/admin/category"><i class="fa-solid fa-circle-left"></i>
+                                            Volver</a>
+                                        
+                                            <div class="form-group">
+                                                <label for="nombre">Nombre Categoria:</label>
+                                                <input id="nombre" type="text" class="form-control" name="nombre"
+                                                value="<%=locals.old && old.name%>"
+                                                placeholder="Nombre de la categoria">
+                                            </div>
+                                            
+                                            <div class="form-group row">
+                                                <div class="col-xs-6 col-md-4">
+                                                    <label for="selectActivo">Categoria Activa:</label>
+                                                    <select id="selectActivo" name="activo" class="form-control">
+                                                        <option></option>
+                                                        <option>SI</option>
+                                                        <option>NO</option>
+    
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        <!-- <div class="input-group">
+                                            <span class="input-group-addon"><i
+                                                    class="glyphicon glyphicon-user"></i></span>
+                                            <input id="nombre" type="text" class="form-control" name="nombre"
+                                                value="<%=locals.old && old.name%>"
+                                                placeholder="Nombre de la categoria">
+                                        </div> -->
+
+                                        <!-- <div class="col-xs-12 col-md-6">
+                                            <label for="selActivo">Categoria Activa:</label>
+                                            <select id="selectActivo" name="activo" class="selectActivo form-control" id="selActivo">
+                                                <option></option>
+                                                <option>SI</option>
+                                                <option>NO</option>
+
+                                            </select>
+                                        </div> -->
+
+
+                                        <hr>
+                                        <div class="form-group row">
+                                            <div class="col-xs-12 col-md-6">
+                                                <button id="btnGuardar" type="submit"
+                                                    class="btn btn-primary btn-md btn-block"><i
+                                                        class="far fa-check-circle"></i>
+                                                    Guardar</button>
+                                            </div>
+                                            <div class="col-xs-12 col-md-6">
+                                                <button id="btnLimpiar" type="reset"
+                                                    class="btn btn-warning btn-md btn-block"><i
+                                                        class="fa-solid fa-broom"></i> Limpiar</button>
+                                            </div>
+
+                                        </div>
+                                    </form>
+                </div>
+            </main>
+
+            <!-- FOOTER -->
+            <%- include ('../partials/footer.ejs') %>
+            <script src="/js/categoryAnimals.js"></script>
+    </body>
+
+</html>
