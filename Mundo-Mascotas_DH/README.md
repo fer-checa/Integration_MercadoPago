@@ -9,7 +9,6 @@ Proyecto de E-Commerce relacionado a comercializar productos y servicios relacio
 
 Se apunta a un tipo de publico especialmente amantes de los animales que realizan un cuidado responsable de sus mascotas.
 
-## Páginas referentes del proyecto
 
 ## Autores
 
